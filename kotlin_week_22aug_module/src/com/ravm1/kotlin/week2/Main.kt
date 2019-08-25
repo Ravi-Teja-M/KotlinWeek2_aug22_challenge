@@ -3,6 +3,7 @@ package com.ravm1.kotlin.week2
 import com.ravm1.kotlin.aug22.easy.EasyTask
 import com.ravm1.kotlin.aug22.veryEasy.VeryEasyTask
 
+
 fun main() {
 
     val easyTask = EasyTask()
@@ -12,7 +13,7 @@ fun main() {
         println("Total of input arrays [] =  $it")
     }
 
-    //2. easy Task#2    TODO Handle even sized strings  like 'abba' or 'lirril'
+    //2. easy Task#2
     val inputString = "Liril"
     val isPalindrome = easyTask.isPalindrome(inputString.trim())
     println(" $inputString is  ${ if(isPalindrome) " a " else {" ! NOT a" }} Palindrome ")
@@ -23,3 +24,5 @@ fun main() {
     veryEasyTask.linkedListImplementation()
 
 }
+
+
