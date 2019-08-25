@@ -1,34 +1,49 @@
 package com.ravm1.kotlin.week2.makeiteasy.ticketingsystem
 
 import java.util.*
+import kotlin.Comparator
 
-class TicketSystem constructor(val counter: Int) : ITicketAdminTask , Comparator<Ticket> {
-
-
+class TicketSystem constructor(val queueNumber: Int) : ITicketAdminTask , Comparator<Ticket> {
 
     var priorityQueueOne = PriorityQueue(this)
 
-    var processedTicketsList = mutableListOf<Ticket>()
+    var processedTicketsList = LinkedList<Ticket>()
 
-    override fun proritize() {
-
+    override fun allowAudienceIntoConcert() {
+        val iterator = processedTicketsList.iterator()
+        while (iterator.hasNext()){
+            val ticket = iterator.next()
+            println(" Queue# ${ticket.recievedfromQueue} -> ${ticket.personName} with $$: ${ticket.ticketPrice} moved into Concert ")
+        }
     }
 
-    override fun processTicket() {
+    override fun processTickets() {
 
-        val ticket = priorityQueueOne.peek()
+        if(priorityQueueOne.isEmpty()){
+            println("Priority queue is empty : check the insertion")
 
-        if(ticket.ticketStatus ==TicketStatus.IN_QUEUE) {
-            ticket.apply {
-
-                this.ticketStatus = TicketStatus.PROCESSED_TICKET
-                this.processedCounterNumber = counter
-
-                processedTicketsList?.let {
-                    it.add( priorityQueueOne.poll() )
-                }
-             }
+            return
         }
+
+        while(!priorityQueueOne.isEmpty()) {
+            val ticket = priorityQueueOne.peek()
+
+            if(ticket.ticketStatus ==TicketStatus.IN_QUEUE) {
+                ticket.apply {
+
+                    this.ticketStatus = TicketStatus.PROCESSED_TICKET
+                    this.recievedfromQueue = queueNumber
+
+                    processedTicketsList?.let {
+                        it.add( priorityQueueOne.poll() )
+                    }
+                }
+            }
+        }
+
+        println(" queue totally processed time to print it")
+
+        allowAudienceIntoConcert()
     }
 
     override fun compare(ticket1: Ticket?, ticket2: Ticket?): Int {
@@ -43,8 +58,16 @@ class TicketSystem constructor(val counter: Int) : ITicketAdminTask , Comparator
         }
     }
 
-    fun addTicketToList(ticket: Ticket?) {
+    fun addTicketToList(ticket: Ticket?) : Boolean {
 
-        priorityQueueOne.add(ticket)
+        return priorityQueueOne.offer(ticket)
+    }
+
+    fun addBatchTicketsToList(listOfTickets : MutableSet<Ticket>) : TicketSystem{
+
+        for(ticket in listOfTickets){
+            priorityQueueOne.offer(ticket)
+        }
+        return this@TicketSystem
     }
 }

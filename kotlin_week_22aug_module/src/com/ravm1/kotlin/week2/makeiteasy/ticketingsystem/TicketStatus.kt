@@ -5,7 +5,5 @@ enum class TicketStatus {
     IN_QUEUE,
 
     PROCESSED_TICKET,
-
-    INSIDE_CONCERT
 }
 

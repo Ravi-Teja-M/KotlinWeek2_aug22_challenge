@@ -8,7 +8,7 @@ class KLinkedList<T : Any>  : ILinkedList<T> {
     private var headNode: Node? = null
     private var tailNode: Node? = null
 
-   private companion object { // Static counter ?? same as Companion ?? verify
+   private companion object { // Static queueNumber ?? same as Companion ?? verify
         var CURRENT_INDEX = -1
     }
 
