@@ -1,35 +1,24 @@
 package com.ravm1.kotlin.week2.makeiteasy
 
-import com.ravm1.kotlin.week2.makeiteasy.ticketingsystem.Ticket
-import com.ravm1.kotlin.week2.makeiteasy.ticketingsystem.TicketPricing
-import com.ravm1.kotlin.week2.makeiteasy.ticketingsystem.TicketStatus
-import com.ravm1.kotlin.week2.makeiteasy.ticketingsystem.TicketSystem
+import com.ravm1.kotlin.week2.makeiteasy.ticketingsystem.*
 
-fun getMockTicketingData() : MutableSet<Ticket>{
+class Concert {
 
-    var  unorderedSpectators = mutableSetOf<Ticket>()
+    lateinit var queue1 : TicketSystem
+    lateinit var queue2 : TicketSystem
+    lateinit var queue3 : TicketSystem
 
-    unorderedSpectators.add(Ticket("Person 1", TicketPricing.TYPE_FREE , TicketStatus.IN_QUEUE))
-    unorderedSpectators.add(Ticket("Person 2", TicketPricing.TYPE_VIP , TicketStatus.IN_QUEUE))
-    unorderedSpectators.add(Ticket("Person 3", TicketPricing.TYPE_FREE , TicketStatus.IN_QUEUE))
-    unorderedSpectators.add(Ticket("Person 4", TicketPricing.TYPE_50 , TicketStatus.IN_QUEUE))
-    unorderedSpectators.add(Ticket("Person 5", TicketPricing.TYPE_50 , TicketStatus.IN_QUEUE))
-    unorderedSpectators.add(Ticket("Person 6", TicketPricing.TYPE_50 , TicketStatus.IN_QUEUE))
-    unorderedSpectators.add(Ticket("Person 7", TicketPricing.TYPE_VIP , TicketStatus.IN_QUEUE))
-    unorderedSpectators.add(Ticket("Person 8", TicketPricing.TYPE_VIP , TicketStatus.IN_QUEUE))
-    unorderedSpectators.add(Ticket("Person 9", TicketPricing.TYPE_FREE , TicketStatus.IN_QUEUE))
-    unorderedSpectators.add(Ticket("Person 10", TicketPricing.TYPE_VIP , TicketStatus.IN_QUEUE))
-    unorderedSpectators.add(Ticket("Person 11", TicketPricing.TYPE_FREE , TicketStatus.IN_QUEUE))
+    fun initTicketManagementSystem() : Concert {
+        queue1 = TicketSystem(1)
+        queue2 = TicketSystem(2)
+        queue3 = TicketSystem(3)
+        return this@Concert
+    }
 
-    return unorderedSpectators
+    fun process() : Concert{
+        queue1.addBatchTicketsToList(mockQueueData[0]).processTickets()
+        queue2.addBatchTicketsToList(mockQueueData[1]).processTickets()
+        queue3.addBatchTicketsToList(mockQueueData[2]).processTickets()
+        return this@Concert
+    }
 }
-
-
-fun initTicketManagementSystem() {
-
-    val queue1 = TicketSystem(1).addBatchTicketsToList(getMockTicketingData())
-    queue1.processTickets()
-}
-
-
-
