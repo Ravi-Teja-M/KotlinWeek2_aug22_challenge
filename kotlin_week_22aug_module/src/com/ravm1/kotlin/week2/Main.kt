@@ -8,19 +8,18 @@ fun main() {
 
     val easyTask = EasyTask()
     easyTask.addTwoArrays(arrayOf(1, 2, 3, 4, 5), arrayOf(1, 2, 3, 4, 5)) {
-        println("Total of input arrays [] =  $it")
+        println("Total of input arrays [] =  $it  \n\n\n\n\n -------------")
     }
 
     //2. easy Task#2
     val inputString = "Liril"
     val isPalindrome = easyTask.isPalindrome(inputString.trim())
-    println(" $inputString is  ${if (isPalindrome) " a " else {
-        " ! NOT a"
-    }} Palindrome ")
+    println("$inputString is  ${if (isPalindrome) " a " else {" ! NOT a"}} Palindrome  \n\n\n\n -------------\"")
 
     //3.Very Easy Task #1
     val veryEasyTask = VeryEasyTask()
     veryEasyTask.linkedListImplementation()
+    println("-----------")
 
     //4. Ticket management system
     val makeItEasyTask = Concert()

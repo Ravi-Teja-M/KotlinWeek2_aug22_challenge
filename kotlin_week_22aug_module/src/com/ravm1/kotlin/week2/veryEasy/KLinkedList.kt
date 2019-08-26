@@ -32,7 +32,7 @@ class KLinkedList<T : Any>  : ILinkedList<T> {
             return
         }
         var node = headNode?.next
-        print("[ " )
+        print("Data from node [ " )
         //Loop for next item
         do {
             print(" ${node?.data}  " )

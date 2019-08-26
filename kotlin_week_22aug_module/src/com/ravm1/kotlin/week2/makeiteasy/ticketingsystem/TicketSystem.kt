@@ -1,7 +1,6 @@
 package com.ravm1.kotlin.week2.makeiteasy.ticketingsystem
 
 import java.util.*
-import kotlin.Comparator
 
 class TicketSystem constructor(private val queueNumber: Int) : ITicketAdminTask , Comparator<Ticket> {
 
@@ -34,6 +33,9 @@ class TicketSystem constructor(private val queueNumber: Int) : ITicketAdminTask 
                 }
             }
         }
+        println("");println("");println("");
+
+
         println(" queue $queueNumber Processed")
         allowAudienceIntoConcert()
     }
