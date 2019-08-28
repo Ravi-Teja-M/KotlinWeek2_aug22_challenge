@@ -1,5 +1,8 @@
 package com.ravm1.kotlin.week2.makeiteasy.ticketingsystem
 
+/**
+ * Ticket price helper class
+ */
 interface TicketPricing {
     companion object TicketType {
         const val TYPE_VIP = 2000

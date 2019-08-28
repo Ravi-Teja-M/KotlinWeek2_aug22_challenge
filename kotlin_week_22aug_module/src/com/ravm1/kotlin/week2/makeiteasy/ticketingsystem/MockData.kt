@@ -1,8 +1,9 @@
 package com.ravm1.kotlin.week2.makeiteasy.ticketingsystem
 
-
+//Gather 3 queue mock data as array at one place
 val mockQueueData = arrayOf(getMockTicketingDataQ1(), getMockTicketingDataQ2(), getMockTicketingDataQ3())
 
+//Queue 1 mock data
 private fun getMockTicketingDataQ1() : MutableSet<Ticket>{
     var  unorderedSpectators = mutableSetOf<Ticket>()
     unorderedSpectators.add(Ticket("Person 1", TicketPricing.TYPE_FREE , TicketStatus.IN_QUEUE))
@@ -19,6 +20,7 @@ private fun getMockTicketingDataQ1() : MutableSet<Ticket>{
     return unorderedSpectators
 }
 
+//Queue 2 mock data
 private fun getMockTicketingDataQ2() : MutableSet<Ticket>{
 
     var  unorderedSpectators = mutableSetOf<Ticket>()
@@ -31,6 +33,7 @@ private fun getMockTicketingDataQ2() : MutableSet<Ticket>{
     return unorderedSpectators
 }
 
+//Queue3 mock data
 private fun getMockTicketingDataQ3() : MutableSet<Ticket>{
     var  unorderedSpectators = mutableSetOf<Ticket>()
     unorderedSpectators.add(Ticket("Person X1", TicketPricing.TYPE_FREE , TicketStatus.IN_QUEUE))
